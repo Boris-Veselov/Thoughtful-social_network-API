@@ -18,8 +18,12 @@ SO THAT my website can handle large amounts of unstructured data
 * GET, POST, PUT and DELETE routes for retrieving, adding, updating and deleting new data
 * Heroku
 
-# Screenshot
+# screenshot
 
-# Contribution
+<img width="1032" alt="Screen Shot 2022-05-26 at 1 46 24 PM" src="https://user-images.githubusercontent.com/96749114/170545915-55cee215-64d9-4dd9-b6b2-eae5862ec81c.png">
+
+# demo
+
+# contribution
 
 Made by Boris Veselov
