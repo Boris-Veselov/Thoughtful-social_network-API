@@ -65,12 +65,12 @@ const thoughtController = {
                     res.status(404).json({message: 'No such Thought found with this id!'});
                     return;
                 }
-                    res.json(dbThoughtData);
-        })
-        .catch(err => res.json(err));
+                res.json(dbThoughtData);
+            })
+            .catch(err => res.json(err));
     },
 
-    // Delete a current thought by ID
+    // delete Thought by id
     deleteThought({params}, res) {
         Thought.findOneAndDelete({_id: params.id})
             .then(dbThoughtData => {
@@ -79,9 +79,40 @@ const thoughtController = {
                     return;
                 }
                 res.json(dbThoughtData);
-                })
-                .catch(err => res.status(400).json(err));
+            })
+            .catch(err => res.status(400).json(err));
     },
+
+    // add a Reaction
+    addReaction({params, body}, res) {
+        Thought.findOneAndUpdate({_id: params.thoughtId}, {$push: {reactions: body}}, {new: true, runValidators: true})
+            .populate({
+                path: 'reactions', 
+                select: '-__v'})
+            .select('-__v')
+            .then(dbThoughtsData => {
+                if (!dbThoughtsData) {
+                    res.status(404).json({message: 'No such Thought found with this id!'});
+                    return;
+                }
+                res.json(dbThoughtsData);
+            })
+            .catch(err => res.status(400).json(err))
+
+    },
+
+    // delete Reaction by id
+    deleteReaction({params}, res) {
+        Thought.findOneAndUpdate({_id: params.thoughtId}, {$pull: {reactions: {reactionId: params.reactionId}}}, {new : true})
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({message: 'No such Thought found with this id!'});
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.status(400).json(err));
+    }
 }
 
 module.exports = thoughtController;
