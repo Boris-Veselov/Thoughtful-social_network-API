@@ -27,7 +27,7 @@ const userController = {
     },
 
     // get one User by id
-    getUSerById({ params}, res) {
+    getUserById({ params}, res) {
         User.findOne({ _id: params.id })
         .populate({
             path: 'thoughts', 
@@ -36,7 +36,7 @@ const userController = {
             path: 'friends',
             select: '-__v'})
         .select('-__v')
-        .then(dbUsersData => res.json(dbUsersData)) 
+        .then(dbUserData => res.json(dbUserData)) 
         .catch(err => {
             console.log(err);
             res.status(400).json(err)
@@ -86,7 +86,7 @@ const userController = {
         .catch(err => res.json(err));
     },
     // delete Friend
-    removeFriend( { params }, res) {
+    deleteFriend( { params }, res) {
         User.findOneAndUpdate(
             { _id: params.userId },
             { $pull: { friends: params.friendId }},
