@@ -4,6 +4,7 @@ const userController = {
 
     // create new User
     createUser({ body }, res) {
+        console.log('route hit');
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err));
