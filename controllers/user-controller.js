@@ -19,7 +19,7 @@ const userController = {
             path: 'friends',
             select: '-__v'})
         .select('-__v')
-        .then(dbUsersData => res.json(dbUsersData))
+        .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
