@@ -3,20 +3,19 @@ const router = require('express').Router();
 // set up conditions from user-controller
 const {
     createUser,
-    getAllUser,
+    getAllUsers,
     getUserById,
     updateUser,
     deleteUser,
     addFriend,
-    deleteFriend
+    removeFriend
   } = require('../../controllers/user-controller');
 
 // set up Get, Put, Post, Delete to getAllUsers, createUsers, to Id, to Update, Delete, addFriend, deleteFriend
 router
-    .post(createUser)
-    .route('/')
-    .get(getAllUser);
-
+.route("/")
+.get(getAllUsers)
+.post(createUser);
 router
     .route('/:id')
     .get(getUserById)
@@ -25,6 +24,6 @@ router
 router
     .route('/:id/friends/:friendId')
     .post(addFriend)
-    .delete(deleteFriend)
-
+    .delete(removeFriend)
+// router.route('/user').get
 module.exports = router; 

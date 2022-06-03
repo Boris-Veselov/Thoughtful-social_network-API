@@ -7,14 +7,14 @@ const userController = {
         console.log('route hit');
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.json(err));
-      },
+            .catch((err) => res.json(err));
+    },
 
     // get all Users
-    getAllUser(req, res) {
+    getAllUsers(req, res) {
         User.find({})
         .populate({
-            path: 'thought', 
+            path: 'thoughts', 
             select: '-__v'})
         .populate({
             path: 'friends',
@@ -86,8 +86,9 @@ const userController = {
         })
         .catch(err => res.json(err));
     },
+    
     // delete Friend
-    deleteFriend( { params }, res) {
+    removeFriend( { params }, res) {
         User.findOneAndUpdate(
             { _id: params.userId },
             { $pull: { friends: params.friendId }},
