@@ -24,6 +24,8 @@ SO THAT my website can handle large amounts of unstructured data
 
 # demo
 
+Link to demonstration: https://watch.screencastify.com/v/6CHItnLtAXe0w1k03vvP
+
 # contribution
 
 Made by Boris Veselov
