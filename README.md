@@ -12,11 +12,9 @@ SO THAT my website can handle large amounts of unstructured data
 
 * Javascript
 * Express.js for routing
-* Handlebars.js as the templating engine
 * NoSQL database MondoDB
 * Mongoose, ODM, to map MongoDB’s document representations of data to a virtual object database
 * GET, POST, PUT and DELETE routes for retrieving, adding, updating and deleting new data
-* Heroku
 
 # screenshot
 
